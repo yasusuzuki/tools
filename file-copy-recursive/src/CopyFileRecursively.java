@@ -38,12 +38,16 @@ public class CopyFileRecursively implements Runnable {
 	public void run (){
 		try {
 			copyFile(fileFrom, fileTo);
+			log("========== 成功：処理が成功しました                         ==========\n");
+
 		} catch ( Exception e ) {
 			StringWriter sw = new StringWriter();
 			PrintWriter pw = new PrintWriter(sw);
 			e.printStackTrace(pw);
 			pw.flush();
 			log( sw.toString() );
+			log("========== 失敗：処理の途中で例外が発生しました          ==========\n");
+
 		} finally {
 			if (callbackComplete != null){
 				callbackComplete.run();
@@ -55,7 +59,7 @@ public class CopyFileRecursively implements Runnable {
 		if ( stopFlag ) {
 			throw new Exception("中断されました");
 		}
-		log(" * コピー元： " + fileFrom + "\n");
+		log(" >> コピー元： " + fileFrom + "\n");
 		
 		if ( Files.isDirectory(fileFrom, LinkOption.NOFOLLOW_LINKS) ){
 			fileTo = Paths.get( fileTo.toString(), fileFrom.getFileName().toString());
@@ -72,13 +76,14 @@ public class CopyFileRecursively implements Runnable {
 				copyFile(p, fileTo);
 			}
 		} else if ( WindowsShortcut.isPotentialValidLink(fileFrom.toFile())){
-			log("  * [ショートカット] 実際は: ");
 			WindowsShortcut shortcut = new WindowsShortcut(fileFrom.toFile());
 			fileFrom = Paths.get(shortcut.getRealFilename());
-			log( fileFrom.toString() + "\n");
+			log("  * [ショートカット] 実際は: " + fileFrom.toString() + "\n");
 			
 			if ( ! shortcutHashSet.contains(fileFrom.toString())) {
 				shortcutHashSet.add(fileFrom.toString());
+				log("  * ショートカットのリンク先を展開します ");
+
 				if ( Files.exists(fileFrom)) {
 					copyFile(fileFrom,fileTo);
 				} else {
@@ -96,9 +101,11 @@ public class CopyFileRecursively implements Runnable {
 					Files.getLastModifiedTime(fileFrom).equals(Files.getLastModifiedTime(fileTo))){
 				log("  * ファイルの更新時刻がコピー元とコピー先で同じなので、コピーはスキップします。\n");
 			}
+
 			if ( ! simulationMode ) {
 				Files.copy(fileFrom, fileTo, StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING);
 			}
+
 		} else {
 			throw new Exception("予期しないファイル種類です");
 		}
@@ -122,11 +129,11 @@ public class CopyFileRecursively implements Runnable {
 			fileTo = Paths.get(args[1]);
 		}
 		
-		if ( ! Files.exists(fileFrom) || !Files.isDirectory(fileFrom) ) {
-			System.out.println("コピー元がフォルダではありません: " + fileFrom.toString());
+		if ( ! Files.exists(fileFrom) ) {
+			System.out.println("コピー元が存在しません: " + fileFrom.toString());
 			System.exit(1);
 		}
-		
+
 		if ( ! Files.exists(fileTo) || !Files.isDirectory(fileTo) ) {
 			System.out.println("コピー先がフォルダではありません: " + fileTo.toString());
 			System.exit(1);			
@@ -136,11 +143,13 @@ public class CopyFileRecursively implements Runnable {
 			simulationMode = Boolean.parseBoolean(args[2]);
 		}
 		
-		System.out.println("以下のパラメータで実行します");
+		System.out.println("========== 以下のパラメータで実行します ==========");
 		System.out.println("    コピー元： " + fileFrom.toString());
 		System.out.println("    コピー先： " + fileTo.toString());
 		System.out.println("    シミュレーション： " + simulationMode);
-		
+
+		System.out.println("========== コピー開始                         ==========");
+
 		CopyFileRecursively cfr = new CopyFileRecursively(fileFrom, fileTo, simulationMode);
 		cfr.run();
 	}

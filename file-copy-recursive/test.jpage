@@ -1,0 +1,6 @@
+
+
+Path p = Paths.get("C:");
+System.out.println("exists:" + Files.exists(p));
+
+System.out.println("symbol:" + Files.isSymbolicLink(p));

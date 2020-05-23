@@ -8,14 +8,22 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.function.Consumer;
 
-public class UI {
+public class UISWT {
 	private Display display;
 	private Shell shell;
 	private Text logText;
 	private String fileFromPath = "C:\\tmp\\from";
 	private String fileToPath = "C:\\tmp\\to";
 
-	public UI() {
+	public void setFilePath(String path) {
+		fileFromPath = path;
+	}
+	
+	public UISWT() {
+
+	}
+	
+	public void init() {
 		GridData gridData;
 
 		display = new Display();
@@ -222,6 +230,7 @@ public class UI {
 	}
 	
 	public void start(){
+		init();
         shell.setSize( 640, 480 );
         shell.open();
  
@@ -235,7 +244,10 @@ public class UI {
 	 
     public static void main (String args[]) {
 		//Starting up UI. blocking the thread. 
-		UI ui = new UI();
+		UISWT ui = new UISWT();
+		if (args.length == 1) {
+			ui.setFilePath(args[0]);
+		}
 		ui.start();
 	}
 }

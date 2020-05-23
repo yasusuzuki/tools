@@ -60,7 +60,7 @@ public class CopyFileRecursivelyXP implements Runnable {
 			throw new Exception("中断されました");
 		}
 		
-		log(" * コピー元： " + fileFrom + "\n");
+		log(" >> コピー元： " + fileFrom + "\n");
 		
 		
 		if ( fileFrom.isDirectory()){
