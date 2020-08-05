@@ -15,7 +15,8 @@ console.log("aaaa"+copied);})();
 )()
 
 
-//Reset css
-javascript:$('body').css('-webkit-user-select','initial')
+//Remove Copy Guard
+// Some Web site disables Ctrl+c or from right click operation by CSS. This bookmarklet reset the css and enable Copy.
+$('body').css('-webkit-user-select','initial')
 
 
