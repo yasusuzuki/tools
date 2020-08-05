@@ -11,3 +11,10 @@
 
 });
 ```
+
+### jQuery basics
+
+* $(function(){});  $(document).ready(function{});  jQuery(document).ready(function(){});  jQuery(function(){});
+  * https://qiita.com/bakatono_super/items/fcbc828b21599568a597
+* jQuery(function($){ ... });と(function($){ ... })(jQuery);の違いを教えて下さい。
+  * http://w3q.jp/t/6021
