@@ -6,13 +6,11 @@ $('#content').css('width','100%');
 
 
 //Remove control character from text on Gmail
-var copied = window.getSelection().toString();
-copied = copied.replace(/\r\n/g, '＞ ');
-console.log("aaaa"+copied);})();
+//
+//* Stack Overflow javascript <-> clipboard interaction https://stackoverflow.com/questions/400212
+javascript:(()=>{document.addEventListener("copy", function (e) { var copied = window.getSelection().toString(); copied = copied.replace(/[\x0a\x0d]/g, '');e.clipboardData.setData('text/plain', copied);e.preventDefault();});})()
 
-()=>{ document.addEventListener("copy", function (e) {  var copied = window.getSelection().toString();  console.log(copied);});}
 
-)()
 
 
 //Remove Copy Guard
