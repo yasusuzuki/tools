@@ -5,6 +5,7 @@ javascript:(()=>{document.addEventListener("paste", function (e) {
   clip = e.clipboardData || window.clipboardData; copied = clip.getData('Text'); copied=decodeURI(copied);
 });})()
 // Advanced version Clipboard API doesn't require Ctrl+v trigger,but it must run on the Web Page over "HTTPS", and the page is "focused".
+//https://web.dev/async-clipboard/
 javascript:(()=>{
   navigator.clipboard.readText().then(clipText =>navigator.clipboard.writeText(decodeURI(clipText )));
 })()
