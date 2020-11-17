@@ -1,4 +1,14 @@
 
+//Format Clipbard from URL Encoced to URL Decoded
+// Basic version. Clipbaord access is allowed only inside "paste" event listern, you need to press Ctrl+V to trigger this function.
+javascript:(()=>{document.addEventListener("paste", function (e) {
+  clip = e.clipboardData || window.clipboardData; copied = clip.getData('Text'); copied=decodeURI(copied);
+});})()
+// Advanced version Clipboard API doesn't require Ctrl+v trigger,but it must run on the Web Page over "HTTPS", and the page is "focused".
+javascript:(()=>{
+  navigator.clipboard.readText().then(clipText =>navigator.clipboard.writeText(decodeURI(clipText )));
+})()
+
 
 //Remove sidebar panel on Redmine
 $('#sidebar').css({'width':'0%','display':'none'});$('#content').css('width','100%');
