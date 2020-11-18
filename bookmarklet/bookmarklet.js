@@ -1,5 +1,15 @@
 javascript:(()=>{
-  var div = document.createElement("strike"); div.innerText = window.getSelection().toString(); window.getSelection().getRangeAt(0).deleteContents() ;window.getSelection().getRangeAt(0).insertNode(div);
+  var div = document.createElement("h3"); 
+  div.setAttribute("style","border-bottom: 1px solid #ddd; box-shadow: 0.1em 0.4em 0.7em 0 #f2f2f2; padding: 0.2em .3em .1em;");
+  div.innerText = window.getSelection().toString();
+  window.getSelection().getRangeAt(0).deleteContents() ;window.getSelection().getRangeAt(0).insertNode(div);
+})()
+
+javascript:(()=>{
+  var div = document.createElement("div"); 
+  div.setAttribute("style","style="padding: 16px;border: 1px solid transparent;border-radius: 3px;border-color: var(--powder-400);background-color: var(--powder-100);"");
+  div.innerText = window.getSelection().toString();
+  window.getSelection().getRangeAt(0).deleteContents() ;window.getSelection().getRangeAt(0).insertNode(div);
 })()
 
 
