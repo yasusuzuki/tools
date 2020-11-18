@@ -1,3 +1,7 @@
+javascript:(()=>{
+  var div = document.createElement("strike"); div.innerText = window.getSelection().toString(); window.getSelection().getRangeAt(0).deleteContents() ;window.getSelection().getRangeAt(0).insertNode(div);
+})()
+
 
 //Format Clipbard from URL Encoced to URL Decoded
 // Basic version. Clipbaord access is allowed only inside "paste" event listern, you need to press Ctrl+V to trigger this function.
