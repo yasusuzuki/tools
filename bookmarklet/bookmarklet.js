@@ -23,6 +23,15 @@ javascript:(()=>{
   window.getSelection().getRangeAt(0).insertNode(div);
 })()
 
+javascript:(()=>{
+  var div = document.createElement("h3");
+  div.setAttribute("style","border-bottom: 1px solid #ddd; box-shadow: 0.1em 0.4em 0.7em 0 #f2f2f2; padding: 0.2em .3em .1em;");
+  div.innerText = window.getSelection().toString();
+  window.getSelection().getRangeAt(0).deleteContents();
+  window.getSelection().getRangeAt(0).insertNode(div);
+})()
+
+
 
 //Format Clipbard from URL Encoced to URL Decoded
 // Basic version. Clipbaord access is allowed only inside "paste" event listern, you need to press Ctrl+V to trigger this function.
