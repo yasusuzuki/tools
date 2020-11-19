@@ -36,17 +36,17 @@ javascript:(()=>{
 //Format Clipbard from URL Encoced to URL Decoded
 // Basic version. Clipbaord access is allowed only inside "paste" event listern, you need to press Ctrl+V to trigger this function.
 javascript:(()=>{document.addEventListener("paste", function (e) {
-  clip = e.clipboardData || window.clipboardData; copied = clip.getData('Text'); copied=decodeURI(copied);
+  clip = e.clipboardData || window.clipboardData; copied = clip.getData('Text'); copied=decodeURIComponent(copied);
 });})()
 // Advanced version Clipboard API doesn't require Ctrl+v trigger,but it must run on the Web Page over "HTTPS" , and the page is "focused", due to some restriction on writeText() 
 //https://web.dev/async-clipboard/
 javascript:(()=>{
-  navigator.clipboard.readText().then(clipText =>navigator.clipboard.writeText(decodeURI(clipText )));
+  navigator.clipboard.readText().then(clipText =>navigator.clipboard.writeText(decodeURIComponent(clipText )));
 })()
 
 // Advanced version 2. Insert docededURI to the textare where you focus on. Ex. Gmail ..
 javascript:(()=>{
-  navigator.clipboard.readText().then(clipText =>document.activeElement.innerHTML +=  decodeURI(clipText));
+  navigator.clipboard.readText().then(clipText =>document.activeElement.innerHTML +=  decodeURIComponent(clipText));
 })()
 
 
