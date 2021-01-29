@@ -81,19 +81,11 @@ javascript:(function(func) {var scr = document.createElement("script");scr.src =
 //https://stackoverflow.com/questions/63187010/e2808b-appears-in-url-net-core
 //https://stackoverflow.com/questions/11305797/remove-zero-width-space-characters-from-a-javascript-string
 javascript:(()=>{document.addEventListener("copy", function (e) {
- var copied = window.getSelection().toString(); 
- copied = copied.replace(/([\u200B-\u200D\uFEFF])/g, ''); 
- e.clipboardData.setData('text/plain', copied);
- e.preventDefault();
+   var copied = window.getSelection().toString(); 
+   copied = copied.replace(/([\u200B-\u200D\uFEFF])/g, ''); 
+   e.clipboardData.setData('text/plain', copied);
+   e.preventDefault();
 });})()
-
-//jQuery version
-javascript:(function(func) {var scr = document.createElement("script");scr.src = "//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js";scr.onload = function() {func(jQuery.noConflict(true));};document.body.appendChild(scr);})(function($) {
-    $(document).on("copy",function (e) { var copied = window.getSelection().toString();
-                                        copied = copied.replace(/[\x0a\x0d]/g, '');
-                                        e.clipboardData.setData('text/plain', copied);
-                                        e.preventDefault();})
-});
 
 //Remove Copy Guard
 // Some Web site disables Ctrl+c or from right click operation by CSS. This bookmarklet reset the css and enable Copy.
