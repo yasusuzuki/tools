@@ -1,6 +1,7 @@
 /***********************************************************************************************************************
                      Gmail 
 ************************************************************************************************************************/
+// Info block
 javascript:(()=>{
   var div = document.createElement("div"); 
   div.setAttribute("style","padding: 16px;border: 1px solid transparent;border-radius: 3px;border-color: #a0c7e4;background-color: #e1ecf4;margin: 0px 20px 0 20px;");
@@ -9,6 +10,7 @@ javascript:(()=>{
   window.getSelection().getRangeAt(0).insertNode(div);
 })()
 
+//
 javascript:(()=>{
   var div = document.createElement("div"); 
   div.setAttribute("style","padding: 16px;border: 1px solid transparent;border-radius: 3px;border-color: #fffbdd;background-color: rgb(176 136 0 / 21%);;margin: 0px 20px 0 20px;");
@@ -17,7 +19,7 @@ javascript:(()=>{
   window.getSelection().getRangeAt(0).insertNode(div);
 })()
 
-
+// Warning block
 javascript:(()=>{
   var div = document.createElement("div"); 
   div.setAttribute("style","padding: 16px;border: 1px solid transparent;border-radius: 3px;border-color: #EFE4B1;background-color: #FFFBDD;margin: 0px 20px 0 20px;");
