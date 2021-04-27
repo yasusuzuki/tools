@@ -1,10 +1,9 @@
 
 Sub CopyFrom稼働疎通Toサブ間()
-  'Call マクロ開始
   Debug.Print "開始"
   
-  Set sheet_from = Workbooks("2期-テストケース一覧(稼働疎通)_契約管理周辺2期第1_照会証券.xls").Worksheets("テストケース一覧(稼働疎通)")
-  Set sheet_to = Workbooks("2期-テストケース一覧(サブ間)_契約管理周辺2期第1_照会証券.xlsx").Worksheets("テストケース一覧(サブ間)")
+  Set sheet_from = Workbooks("aa.xls").Worksheets("aa")
+  Set sheet_to = Workbooks("bb.xlsx").Worksheets("bb")
   
   'コピー元とコピー先の列を定義する。コピー元とコピー先は同じ列が前提
   '★カスタマイズ箇所：　現時点でコピーしたい列は以下のとおり
@@ -87,7 +86,6 @@ Sub CopyFrom稼働疎通Toサブ間()
   Next orig_key_cell
   
   
-  'Call マクロ終了
   Close #1
   Debug.Print "完了"
   
