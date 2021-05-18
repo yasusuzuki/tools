@@ -75,7 +75,7 @@ Function 受渡の渡リストqueryOffsetFromServer(offset_records As Long) As B
     query_param = query_param + "limit=" & PAGE_LIMIT & "&offset=" & offset_records & "&" 'ページネーション
     query_param = query_param + "project_id=13&"  'トッププロジェクト
     query_param = query_param + "tracker_id=9&"   'トラッカーは受渡
-    query_param = query_param + "cf_283=" & WorksheetFunction.EncodeURL("契約管理周辺２期第１") & "&" '出し側BOX名は周辺Box
+    query_param = query_param + "cf_283=" & WorksheetFunction.EncodeURL("###ここにチーム名をいれる####") & "&" '出し側BOX名
     '※cf_282 出し側BOX名_IDを検索文字列にしてみたが絞り込みされなかった。cf_282は使用してはいけない。
     
     Set xml = GetXmlData(REDMINE_URL & "/issues.xml?key=" & Range("RESTAPI_KEY") & "&" & query_param)
