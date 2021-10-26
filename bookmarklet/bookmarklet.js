@@ -33,12 +33,25 @@ javascript:(()=>{
   window.getSelection().getRangeAt(0).insertNode(div);
 })()
 
+// Header 
 javascript:(()=>{
   var div = document.createElement("h3");
   div.setAttribute("style","border-bottom: 1px solid #ddd; box-shadow: 0.1em 0.4em 0.7em 0 #f2f2f2; padding: 0.2em .3em .1em;");
   div.innerText = window.getSelection().toString();
   window.getSelection().getRangeAt(0).deleteContents();
   window.getSelection().getRangeAt(0).insertNode(div);
+})()
+
+// Paste Clipboard with text URL decoded
+javascript:(()=>{ 
+  navigator.clipboard.readText().then(
+    clipText => {
+      var div = document.createElement("div");
+      div.innerText = decodeURI(clipText);
+      window.getSelection().getRangeAt(0).deleteContents();
+      window.getSelection().getRangeAt(0).insertNode(div);
+    }
+  );
 })()
 
 /********************************************************************/
